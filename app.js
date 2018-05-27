@@ -1,17 +1,21 @@
-console.log('Starting app.js');
+console.log('Starting app2-command-argument.js');
 
 const fs = require('fs');
-const os = require('os');
 const _ = require('lodash');
+
 const notes = require('./notes.js');
 
-// console.log(_.isString(true));
-// console.log(_.isString('Gary'));
-var filteredArray = _.uniq(['Gary', 1, 'Gary', 1, 2, 3, 4]);
-console.log(filteredArray);
+var command = process.argv[2];
+console.log('Command: ', command);
 
-// console.log('Result:', notes.add(9, -2));
-
-// var user = os.userInfo();
-//
-// fs.appendFile('greetings.txt', `Hello ${user.username}! You are ${notes.age}.`);
+if (command === 'add') {
+  console.log('Adding new note');
+} else if (command === 'list') {
+  console.log('Listing all notes');
+} else if (command === 'read') {
+  console.log('Reading note');
+} else if (command == 'remove') {
+  console.log('Removing note');
+} else {
+  console.log('Command not recognized');
+}

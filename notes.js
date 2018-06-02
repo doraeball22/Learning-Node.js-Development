@@ -15,6 +15,7 @@ const saveNotes = (notes) => {
 };
 
 const addNote = (title, body) => {
+    console.log('Adding note', title);
     let notes = fetchNotes();
     let note = {
         title,
@@ -37,6 +38,12 @@ const getNote = (title) => {
 };
 const removeNote = (title) => {
     console.log('Removing note', title);
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter((note) => note.title !== title);
+    // save new notes array
+    saveNotes(filteredNotes);
+    // returns true, that means a note was removed; if it returns false, that means a note was not removed.
+    return notes.length !== filteredNotes.length;
 };
 
 
